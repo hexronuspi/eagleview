@@ -34,10 +34,10 @@ A package for greatly increasing the visualisation of datasets, in an easy manne
 5. Use the package in your Python code:
 
 ```python
-from eagle.figshow import ImageGridDisplay
+from eagle.figshow import ImageMatrix
 
-image_display = ImageGridDisplay('/content/path_to_folder_containing_images')
-image_display.display_images((2, 3), False)
+image_display = ImageMatrix('/content/path_to_folder_containing_images')
+image_display.display_image((2, 3), False)
 ```
 
-This will display the images in a grid with 3 columns and 2 rows, without printing the left out images. If you want to print all images, you can call `image_display.display_images((2, 3))` or `image_display.display_images((2, 3), True)`.
+This will display the images in a grid with 3 columns and 2 rows, without printing the left out images. If you want to print all images, you can call `image_display.display_image((2, 3))` or `image_display.display_image((2, 3), True)`.
