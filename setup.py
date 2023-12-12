@@ -6,8 +6,7 @@ setup(
     packages=find_packages(),
     install_requires=[
         'matplotlib',
-        'Pillow',
-        'math'
+        'Pillow'
     ],
     # Additional metadata
     author='Aditya',
