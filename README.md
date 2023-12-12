@@ -34,7 +34,7 @@ A package for greatly increasing the visualisation of datasets, in an easy manne
 5. Use the package in your Python code:
 
 ```python
-from eagle.figshow import ImageMatrix
+from eagleview.figshow import ImageMatrix
 
 image_display = ImageMatrix('/content/path_to_folder_containing_images')
 image_display.display_image((2, 3), False)
