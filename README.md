@@ -11,7 +11,9 @@
 A package for greatly increasing the visualisation of datasets, in minimal lines of code.
 
 ## Usage
-
+```
+It is advised to use `Method 1`, as the github repository is updated from time to time, it may occour that new changes are not still updated.
+```
 ### Method 1
 1. Clone the repository:
 
