@@ -15,14 +15,14 @@ A package for greatly increasing the visualisation of datasets, in an easy manne
 1. Clone the repository:
 
 ```bash
-!git clone https://github.com/hexronuspi/eagle
+!git clone https://github.com/hexronuspi/eagleview
 ```
 2. Upload the folder containing your images. If they are in a zip or any other file, extract them first.
 
 3. Navigate to the cloned repository:
 
 ```
-%cd eagle
+%cd eagleview
 ```
 
 4. Install the package:
