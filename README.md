@@ -1,5 +1,7 @@
 `ongoing`
 
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1ZklXjCLbrZIACctPS4EKZ4ZnuqdjonO4?usp=sharing)
+
 # eagleview
 
 A package for greatly increasing the visualisation of datasets, in an easy manner.
