@@ -35,4 +35,3 @@ image_display.display_images((2, 3), False)
 ```
 
 This will display the images in a grid with 3 columns and 2 rows, without printing the left out images. If you want to print all images, you can call `image_display.display_images((2, 3))` or `image_display.display_images((2, 3), True)`.
-```
