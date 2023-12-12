@@ -3,13 +3,13 @@ import matplotlib.pyplot as plt
 from PIL import Image
 import math
 
-class ImageGridDisplay:
+class ImageMatrix:
     def __init__(self, folder_path, figsize=(10, 10), axis='off'):
         self.folder_path = folder_path
         self.figsize = figsize
         self.axis = axis
 
-    def display_images(self, grid_dimensions, print_all=True):
+    def display_image(self, grid_dimensions, print_all=True):
         num_columns = grid_dimensions[1]
         images = os.listdir(self.folder_path)
         num_images = len(images)
