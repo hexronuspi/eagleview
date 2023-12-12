@@ -18,6 +18,9 @@ class ImageMatrix:
         num_images = len(images)
         num_rows = math.ceil(num_images / num_columns) if print_all else grid_dimensions[0]
 
+        if not print_all:
+            num_images = min(num_images, num_rows * num_columns)
+
         fig, axs = plt.subplots(num_rows, num_columns, figsize=(figsize[0]*num_columns, figsize[1]*num_rows)) 
         for i in range(num_rows):
             for j in range(num_columns):
