@@ -1,6 +1,7 @@
 import os
 import matplotlib.pyplot as plt
 from PIL import Image
+import math
 
 class ImageGridDisplay:
     def __init__(self, folder_path, figsize=(10, 10), axis='off'):
@@ -8,15 +9,18 @@ class ImageGridDisplay:
         self.figsize = figsize
         self.axis = axis
 
-    def display_images(self, grid_dimensions):
-        a, b = grid_dimensions
-        images = os.listdir(self.folder_path)[:a * b]   
+    def display_images(self, grid_dimensions, print_all=True):
+        num_columns = grid_dimensions[1]
+        images = os.listdir(self.folder_path)
+        num_images = len(images)
+        num_rows = math.ceil(num_images / num_columns) if print_all else grid_dimensions[0]
 
-        fig, axs = plt.subplots(a, b, figsize=self.figsize) 
-        for i in range(a):
-            for j in range(b):
-                if i * b + j < len(images):
-                    img = Image.open(os.path.join(self.folder_path, images[i * b + j]))
+        fig, axs = plt.subplots(num_rows, num_columns, figsize=self.figsize) 
+        for i in range(num_rows):
+            for j in range(num_columns):
+                index = i * num_columns + j
+                if index < num_images:
+                    img = Image.open(os.path.join(self.folder_path, images[index]))
                     axs[i, j].imshow(img)
                     axs[i, j].axis(self.axis)  
                 else:
