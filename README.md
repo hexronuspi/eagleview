@@ -30,7 +30,7 @@ A package for greatly increasing the visualisation of datasets, in an easy manne
 ```python
 from eagle.figshow import ImageGridDisplay
 
-image_display = ImageGridDisplay('/content/random_uploads/images')
+image_display = ImageGridDisplay('/content/path_to_folder_containing_images')
 image_display.display_images((2, 3), False)
 ```
 
