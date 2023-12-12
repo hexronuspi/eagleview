@@ -12,6 +12,7 @@ A package for greatly increasing the visualisation of datasets, in an easy manne
 
 ## Usage
 
+### Method 1
 1. Clone the repository:
 
 ```bash
@@ -32,6 +33,19 @@ A package for greatly increasing the visualisation of datasets, in an easy manne
 ```
 
 5. Use the package in your Python code:
+
+### Method2
+
+1. using pip install
+```bash
+!pip install eagleview
+```
+```python
+import eagleview
+```
+
+<hr>
+
 
 ```python
 from eagleview.figshow import ImageMatrix
