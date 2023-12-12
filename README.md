@@ -8,7 +8,7 @@
 
 # eagleview
 
-A package for greatly increasing the visualisation of datasets, in an easy manner.
+A package for greatly increasing the visualisation of datasets, in minimal lines of code.
 
 ## Usage
 
