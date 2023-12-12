@@ -4,7 +4,7 @@ from PIL import Image
 import math
 
 class ImageMatrix:
-    def __init__(self, folder_path, figsize=(10, 10), axis='off'):
+    def __init__(self, folder_path, figsize, axis):
         self.folder_path = folder_path
         self.figsize = figsize
         self.axis = axis
