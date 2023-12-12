@@ -1,6 +1,10 @@
 `ongoing`
-
-[![Colab Preview for Code](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1ZklXjCLbrZIACctPS4EKZ4ZnuqdjonO4?usp=sharing)
+<p align="center">
+  Colab Preview for Code <br>
+  <a href="https://colab.research.google.com/drive/1ZklXjCLbrZIACctPS4EKZ4ZnuqdjonO4?usp=sharing">
+    <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab">
+  </a>
+</p>
 
 # eagleview
 
