@@ -1,11 +1,17 @@
 `ongoing`
-<p align="center">
+  <p align="left">
   Colab Preview for Code <br>
   <a href="https://colab.research.google.com/drive/1ZklXjCLbrZIACctPS4EKZ4ZnuqdjonO4?usp=sharing" target="_blank">
     <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab">
   </a>
-</p>
-
+  </p>
+ 
+ <p align="center">
+  eagleview webpage <br>
+  <a href="https://hexronus.tech/eagleview/index.html" target="_blank">
+    <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="eagleview">
+  </a>
+  </p>
 # eagleview
 
 A package for greatly increasing the visualisation of datasets, in minimal lines of code.
