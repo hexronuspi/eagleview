@@ -53,12 +53,25 @@ import eagleview
 
 <hr>
 
-
+### Input:
 ```python
 from eagleview.figshow import ImageMatrix
 
 image_display = ImageMatrix('/content/path_to_folder_containing_images')
-image_display.display_image((2, 3), False)
+```
+### Output:
+```python
+#v0.2
+(ImageMatrix('random_uploads/images').rand()).display_image((2,2), print_all=False, display_name=True)
+```
+```python
+# v0.1
+(ImageMatrix('random_uploads/images')).display_image((2,2), print_all=False)
 ```
 
-This will display the images in a grid with 3 columns and 2 rows, without printing the left out images. If you want to print all images, you can call `image_display.display_image((2, 3))` or `image_display.display_image((2, 3), True)`.
+## Releases: 
+- `v0.1`
+  - This will display the images in a grid with 3 columns and 2 rows, without printing the left out images. If you want to print all images, you can call `image_display.display_image((2, 3))` or `image_display.display_image((2, 3), True)`.
+  
+- `v0.2`
+  - This will display the name of the images, as their titles. In v0.1, the images were printed starting from first and consecutive until upper bound is reached, this is an optional and random option is added.
