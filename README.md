@@ -56,7 +56,11 @@ import eagleview
 ```
 
 <hr>
-
+Note: 
+```python
+import os # for file handling
+import random # for random function usage
+```
 ### Input:
 ```python
 from eagleview.figshow import ImageMatrix
