@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 from PIL import Image
 import math
 
-class ImageMatrix:
+class ImageMatrix:#just gives folder names, and it plots images without hasling with parameters
     def __init__(self, folder_path, figsize=(10, 10), axis='off'):
         self.folder_path = folder_path
         self.figsize = figsize
