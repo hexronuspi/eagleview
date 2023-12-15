@@ -1,4 +1,8 @@
-`ongoing`
+`ongoing` 
+
+`v0.1` | `v0.2`(current)
+
+
   <p align="left">
   Colab Preview for Code <br>
   <a href="https://colab.research.google.com/drive/1ZklXjCLbrZIACctPS4EKZ4ZnuqdjonO4?usp=sharing" target="_blank">
