@@ -1,8 +1,7 @@
-import os
 import matplotlib.pyplot as plt
 from PIL import Image
 import math
-import random
+
 
 
 class ImageMatrix:
