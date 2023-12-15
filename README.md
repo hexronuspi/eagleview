@@ -60,7 +60,6 @@ import eagleview
 
 ### Input:
 
-Note: 
 ```python
 import os # for file handling
 import random # for random function usage
