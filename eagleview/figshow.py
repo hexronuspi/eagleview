@@ -9,22 +9,36 @@ class ImageMatrix:
         self.figsize = figsize
         self.axis = axis
 
-    def display_image(self, grid_dimensions, print_all=True):
-        num_columns = grid_dimensions[1]
-        images = os.listdir(self.folder_path)
+    def list_and_display_images(self):
+        images = [f for f in os.listdir(self.folder_path) if f.lower().endswith(('.png', '.jpeg'))]
+
+        if not images:
+            print("No images found in the specified folder.")
+            return
+
         num_images = len(images)
-        num_rows = math.ceil(num_images / num_columns) if print_all else grid_dimensions[0]
 
-        fig, axs = plt.subplots(num_rows, num_columns, figsize=self.figsize) 
-        for i in range(num_rows):
-            for j in range(num_columns):
-                index = i * num_columns + j
-                if index < num_images:
-                    img = Image.open(os.path.join(self.folder_path, images[index]))
-                    axs[i, j].imshow(img)
-                    axs[i, j].axis(self.axis)  
-                else:
-                    axs[i, j].axis('off')  
+        if num_images == 1:
+            img = Image.open(os.path.join(self.folder_path, images[0]))
+            plt.figure(figsize=self.figsize)
+            plt.imshow(img)
+            plt.axis(self.axis)
+            plt.show()
+        else:
+            num_rows = min(3, math.ceil(num_images / 3))
+            num_columns = min(3, num_images)
 
-        plt.tight_layout()
-        plt.show()
+            fig, axs = plt.subplots(num_rows, num_columns, figsize=self.figsize) 
+            for i in range(num_rows):
+                for j in range(num_columns):
+                    index = i * num_columns + j
+                    if index < num_images:
+                        img = Image.open(os.path.join(self.folder_path, images[index]))
+                        axs[i, j].imshow(img)
+                        axs[i, j].axis(self.axis)  
+                    else:
+                        axs[i, j].axis('off') 
+
+            plt.tight_layout()
+            plt.show()
+
