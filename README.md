@@ -56,17 +56,27 @@ import eagleview
 ```
 
 <hr>
+
 Note: 
 ```python
 import os # for file handling
 import random # for random function usage
 ```
+
 ### Input:
+
+Note: 
+```python
+import os # for file handling
+import random # for random function usage
+```
+
 ```python
 from eagleview.figshow import ImageMatrix
 
 image_display = ImageMatrix('/content/path_to_folder_containing_images')
 ```
+
 ### Output:
 ```python
 #v0.2
