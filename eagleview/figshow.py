@@ -2,14 +2,17 @@ import os
 import matplotlib.pyplot as plt
 from PIL import Image
 import math
+import random
 
-class ImageMatrix:#just give folder names, and it plots images without hasling with parameters
+random.seed(42)
+
+class ImageMatrix:
     def __init__(self, folder_path, figsize=(10, 10), axis='off'):
         self.folder_path = folder_path
         self.figsize = figsize
         self.axis = axis
 
-    def list_and_display_images(self):
+    def display_images(self, upto=3):
         images = [f for f in os.listdir(self.folder_path) if f.lower().endswith(('.png', '.jpeg'))]
 
         if not images:
@@ -17,6 +20,9 @@ class ImageMatrix:#just give folder names, and it plots images without hasling w
             return
 
         num_images = len(images)
+        upto = min(upto, num_images)
+        images = images[:upto]
+        num_images = upto
 
         if num_images == 1:
             img = Image.open(os.path.join(self.folder_path, images[0]))
@@ -25,20 +31,24 @@ class ImageMatrix:#just give folder names, and it plots images without hasling w
             plt.axis(self.axis)
             plt.show()
         else:
-            num_rows = min(3, math.ceil(num_images / 3))
-            num_columns = min(3, num_images)
+            if num_images > 9:
+                selected_images = random.sample(images, 9)
+            else:
+                selected_images = images
+
+            num_rows = min(3, math.ceil(len(selected_images) / 3))
+            num_columns = min(3, len(selected_images))
 
             fig, axs = plt.subplots(num_rows, num_columns, figsize=self.figsize) 
             for i in range(num_rows):
                 for j in range(num_columns):
                     index = i * num_columns + j
-                    if index < num_images:
-                        img = Image.open(os.path.join(self.folder_path, images[index]))
+                    if index < len(selected_images):
+                        img = Image.open(os.path.join(self.folder_path, selected_images[index]))
                         axs[i, j].imshow(img)
-                        axs[i, j].axis(self.axis)  
+                        axs[i, j].axis(self.axis)
                     else:
-                        axs[i, j].axis('off') 
+                        axs[i, j].axis('off')
 
             plt.tight_layout()
             plt.show()
-
