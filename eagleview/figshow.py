@@ -2,8 +2,7 @@ import os
 import matplotlib.pyplot as plt
 from PIL import Image
 import math
-
-
+import random
 
 class ImageMatrix:
     def __init__(self, folder_path, figsize=(10, 10), axis='off'):
