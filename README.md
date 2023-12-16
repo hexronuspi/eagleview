@@ -1,6 +1,6 @@
 `ongoing` 
 
-`v1.1`(current)
+`v1.0` | `v1.1`(current)
 
 `v0.1` | `v0.2`
 
@@ -112,3 +112,6 @@ im.rand((a, b)).display_image( # a,b is the size of matrix
  
 - `v1.0`
    - Added capability to display label with a variey of options.
+     
+- `v1.1`
+   - Added capability to change label display and visuals with a variey of options.
