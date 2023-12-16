@@ -74,7 +74,7 @@ image_display = ImageMatrix('/content/path_to_folder_containing_images')
 #v1.x
 from eagleview.figshow import ImageMatrix
 
-im = ImageMatrix('/content/path_to_folder_containing_images', '/content/path_to_file_containing_label')
+im = ImageMatrix('/content/path_to_folder_containing_images', '/content/path_to_file_containing_label.csv')
 #only .csv extension
 ```
 
