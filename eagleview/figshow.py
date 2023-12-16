@@ -5,8 +5,6 @@ import math
 import random
 import pandas as pd
 
-import pandas as pd
-
 class ImageMatrix:
     def __init__(self, folder_path=None, file_path=None, figsize=(10, 10), axis='off'):
         self.folder_path = folder_path
@@ -26,7 +24,7 @@ class ImageMatrix:
         self.grid_dimensions = grid_dimensions
         return self
 
-    def display_image(self, check_col='Image_Name', display_label=False, display_cols=None, display_name=False, print_all=True, x=0, y=0, fig_size=None):
+    def display_image(self, check_col='Image_Name', display_label=False, display_cols=None, display_name=False, print_all=True, x=0, y=0, fig_size=None, fontsize=10, text_color='white', label_background_color='black'):
         if self.folder_path is None:
             print("Folder path not provided. Please specify a folder path.")
             return
@@ -76,7 +74,7 @@ class ImageMatrix:
                             if display_label and labels:
                                 if display_name:
                                     labels = f"{image_name}\n{labels}"
-                                axs[i, j].text(x, y, labels, color='white', backgroundcolor='black', va='bottom', fontsize=10)  # Adjust fontsize if needed
+                                axs[i, j].text(x, y, labels, color=text_color, backgroundcolor=label_background_color, va='bottom', fontsize=fontsize)  # Modify label properties here
                 else:
                     axs[i, j].axis('off')
 
