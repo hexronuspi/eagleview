@@ -1,6 +1,8 @@
 `ongoing` 
 
-`v0.1` | `v0.2`(current)
+`v0.1` | `v0.2`
+
+`v1.1`(current)
 
 
   <p align="left">
@@ -61,24 +63,43 @@ import eagleview
 ### Input:
 
 ```python
-import os # for file handling
-import random # for random function usage
-```
-
-```python
+#v0.x
 from eagleview.figshow import ImageMatrix
 
 image_display = ImageMatrix('/content/path_to_folder_containing_images')
 ```
 
+
+```python
+#v1.x
+from eagleview.figshow import ImageMatrix
+
+im = ImageMatrix('/content/path_to_folder_containing_images', '/content/path_to_file_containing_label')
+#only .csv extension
+```
+
 ### Output:
 ```python
+#v1.0
+im.rand((a, b)).display_image( # a,b is the size of matrix
+    check_col='col_name', # replace 'col_name' with the name of column, which has image name
+    display_label=True,  # by default this is False
+    display_cols=['col1', 'col2'], # replace '', to the column name which you want to print as label
+    display_name=True, # by default this is False
+    print_all=False, # by default this is True
+    x= '', # X-coordinate of label
+    y= '', # Y-coordinate of label
+    fig_size=(m, n) # by default this is set to max(image_size), maximum size of all the images which will be displayed
+)
+
+```
+```python
 #v0.2
-(ImageMatrix('random_uploads/images').rand()).display_image((2,2), print_all=False, display_name=True)
+(ImageMatrix('/content/path_to_folder_containing_images').rand()).display_image((2,2), print_all=False, display_name=True)
 ```
 ```python
 # v0.1
-(ImageMatrix('random_uploads/images')).display_image((2,2), print_all=False)
+(ImageMatrix('/content/path_to_folder_containing_images')).display_image((2,2), print_all=False)
 ```
 
 ## Releases: 
@@ -87,3 +108,6 @@ image_display = ImageMatrix('/content/path_to_folder_containing_images')
   
 - `v0.2`
   - This will display the name of the images, as their titles. In v0.1, the images were printed starting from first and consecutive until upper bound is reached, this is an optional and random option is added.
+ 
+- `v1.0`
+   - Added capability to display label with a variey of options.
