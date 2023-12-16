@@ -74,7 +74,7 @@ class ImageMatrix:
                             if display_label and labels:
                                 if display_name:
                                     labels = f"{image_name}\n{labels}"
-                                axs[i, j].text(x, y, labels, color=text_color, backgroundcolor=label_background_color, va='bottom', fontsize=fontsize)  # Modify label properties here
+                                axs[i, j].text(x, y, labels, color=text_color, backgroundcolor=label_background_color, va='bottom', fontsize=fontsize) 
                 else:
                     axs[i, j].axis('off')
 
