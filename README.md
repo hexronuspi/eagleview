@@ -81,7 +81,7 @@ im = ImageMatrix('/content/path_to_folder_containing_images', '/content/path_to_
 
 ### Output:
 ```python
-#v1.0
+#v1.1
 im.rand((a, b)).display_image( # a,b is the size of matrix
     check_col='col_name', # replace 'col_name' with the name of column, which has image name
     display_label=True,  # by default this is False
@@ -91,6 +91,9 @@ im.rand((a, b)).display_image( # a,b is the size of matrix
     x= , # X-coordinate of label
     y= , # Y-coordinate of label
     fig_size=(m, n) # by default this is set to max(image_size), maximum size of all the images which will be displayed
+    fontsize= , # font size is 10, by default
+    text_color='',  # Specify hex code for text color (e.g., white)
+    label_background_color='' # Specify hex code for label_background_color (e.g., black)
 )
 
 ```
