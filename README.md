@@ -109,9 +109,12 @@ im.rand((a, b)).display_image( # a,b is the size of matrix
 ## Test Run
 
 This is done with a sample dataset which can be found, [here](https://github.com/hexronuspi/random_uploads).
-Image : `random_uploads/images`
-Label : `random_uploads/csv/Book1.csv`
-
+<ul>
+  <li>
+Image : `random_uploads/images`</li>
+<li>
+Label : `random_uploads/csv/Book1.csv`</li>
+</ul>
 <p align="left">
   <img src="https://github.com/hexronuspi/eagleview/blob/main/test/run-images/v1.1/test_run_eagleview_v1.1.png" alt="Image" width="600">
 </p>
