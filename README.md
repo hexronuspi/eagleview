@@ -106,7 +106,29 @@ im.rand((a, b)).display_image( # a,b is the size of matrix
 # v0.1
 (ImageMatrix('/content/path_to_folder_containing_images')).display_image((2,2), print_all=False)
 ```
+## Test Run
 
+This is done with a sample dataset which can be found, [here](https://github.com/hexronuspi/random_uploads).
+Image : `random_uploads/images`
+Label : `random_uploads/csv/Book1.csv`
+
+<p align="left">
+  <img src="https://github.com/hexronuspi/eagleview/blob/main/test/run-images/v1.1/test_run_eagleview_v1.1.png" alt="Image" width="600">
+</p>
+
+### Label Data
+
+| Image_Name       | Color_code | Type      |
+|------------------|------------|-----------|
+| 123              | rgb        | hole      |
+| 456              | rgb        | hole      |
+| cube             | bw         | obstacle  |
+| cyllinder        | bw         | pick      |
+| depth-cyllinder  | bw         | pick      |
+| edge1            | rgb        | map       |
+| edge2            | rgb        | map       |
+| edge3            | rgb        | map       |
+| edge4            | rgb        | map       |
 ## Releases: 
 - `v0.1`
   - This will display the images in a grid with 3 columns and 2 rows, without printing the left out images. If you want to print all images, you can call `image_display.display_image((2, 3))` or `image_display.display_image((2, 3), True)`.
