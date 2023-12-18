@@ -1,1 +1,1 @@
-import eagleview
+from eagleview.figshow import *
