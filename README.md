@@ -1,7 +1,7 @@
 `ongoing` 
 `This code has it's implementation in different languages, refer to "implementation" folder.`
 
-`v1.0` | `v1.1`(current)
+`v1.0` | `v1.1` | `v1.2`(current)
 
 `v0.1` | `v0.2`
 
@@ -73,14 +73,46 @@ image_display = ImageMatrix('/content/path_to_folder_containing_images')
 
 
 ```python
-#v1.x
+#v1.1
 from eagleview.figshow import ImageMatrix
 
 im = ImageMatrix('/content/path_to_folder_containing_images', '/content/path_to_file_containing_label.csv')
 #only .csv extension
 ```
 
+
+```python
+#v1.2
+from eagleview.figshow import MultiImageMatrix
+
+im = MultiImageMatrix(
+    folder_paths=['random_uploads/images', 'random_uploads/Football Dataset'],
+    file_paths=['random_uploads/csv/Book1.csv', '']
+)
+#only .csv extension
+```
+
 ### Output:
+```python
+#v1.2
+
+
+im.rand((2,4)).display_image(
+    {'check_col': 'Image_Name', 'display_cols': ['Color_code', 'type'], 'display_name': True},
+    {}, # replace this with first for label displaying, this number should be the same of folder_paths number
+    fig_size=(20, 16),
+    print_all=False,
+    display_label = True,
+    x=200,
+    y=1600,
+    fontsize=(10,10),
+    text_color='white',
+    label_background_color='black'
+)
+```
+
+
+
 ```python
 #v1.1
 im.rand((a, b)).display_image( # a,b is the size of matrix
