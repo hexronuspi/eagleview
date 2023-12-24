@@ -24,7 +24,7 @@ class ImageMatrix:
         self.grid_dimensions = grid_dimensions
         return self
 
-    def display_image(self, check_col='Image_Name', display_label=False, display_cols=None, display_name=False, print_all=True, x=0, y=0, fig_size=None, fontsize=10, text_color='white', label_background_color='black'):
+    def display_image(self, check_col=None, display_label=False, display_cols=None, display_name=False, print_all=True, x=0, y=0, fig_size=None, fontsize=10, text_color='white', label_background_color='black'):
         if self.folder_path is None:
             print("Folder path not provided. Please specify a folder path.")
             return
@@ -63,7 +63,7 @@ class ImageMatrix:
                     axs[i, j].imshow(img)
                     axs[i, j].axis(self.axis)
                     image_name = images[index].split('.')[0]
-                    if not self.df.empty:
+                    if not self.df.empty and check_col:
                         row = self.df[self.df[check_col] == image_name]
                         if not row.empty:
                             labels = ""
