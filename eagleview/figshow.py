@@ -80,3 +80,103 @@ class ImageMatrix:
 
         plt.tight_layout()
         plt.show()
+
+class MultiImageMatrix:
+    def __init__(self, folder_paths=None, file_paths=None, figsize=(10, 10), axis='off'):
+        self.folder_paths = folder_paths if folder_paths is not None else []
+        self.file_paths = file_paths if file_paths is not None else []
+        self.figsize = figsize
+        self.axis = axis
+        self.image_matrices = []
+
+        if len(self.folder_paths) != len(self.file_paths):
+            raise ValueError("Number of folder paths and file paths should be the same.")
+
+        for i, folder_path in enumerate(self.folder_paths):
+            self.image_matrices.append({
+                'folder_path': folder_path,
+                'file_path': self.file_paths[i] if i < len(self.file_paths) else None,
+                'figsize': figsize,
+                'axis': axis,
+                'random': False,
+                'grid_dimensions': (0, 0),
+            })
+
+    def rand(self, grid_dimensions):
+        for im_matrix in self.image_matrices:
+            im_matrix['random'] = True
+            im_matrix['grid_dimensions'] = grid_dimensions
+        return self
+
+    def display_image(self, *args, **kwargs):
+        if len(args) != len(self.folder_paths):
+            raise ValueError("Number of arguments should match the number of folders.")
+
+        for i, im_matrix in enumerate(self.image_matrices):
+            folder_path = im_matrix['folder_path']
+            file_path = im_matrix['file_path']
+
+            images = [f for f in os.listdir(folder_path) if os.path.isfile(os.path.join(folder_path, f)) and f.lower().endswith(('.png', '.jpg', '.jpeg', '.gif', '.bmp'))]
+
+            if file_path and file_path != '{}':
+                df = pd.read_csv(file_path)
+            else:
+                df = pd.DataFrame()
+
+            if not images:
+                print(f"No image files found in {folder_path}.")
+                continue
+
+            num_images = im_matrix['grid_dimensions'][0] * im_matrix['grid_dimensions'][1] if kwargs.get('print_all', True) else len(images)
+            images = random.sample(images, min(num_images, len(images)))
+
+            fig_width, fig_height = kwargs.get('fig_size', im_matrix['figsize'])
+            max_img_width, max_img_height = 0, 0
+
+            for img_name in images:
+                img = Image.open(os.path.join(folder_path, img_name))
+                max_img_width = max(max_img_width, img.width)
+                max_img_height = max(max_img_height, img.height)
+
+            reduced_width = fig_width * 0.75
+            reduced_height = fig_height * 0.75
+
+            fig, axs = plt.subplots(im_matrix['grid_dimensions'][0], im_matrix['grid_dimensions'][1], figsize=(reduced_width, reduced_height))
+            fig.patch.set_facecolor('white')
+
+            for i in range(im_matrix['grid_dimensions'][0]):
+                for j in range(im_matrix['grid_dimensions'][1]):
+                    index = i * im_matrix['grid_dimensions'][1] + j
+                    if index < len(images):
+                        img = Image.open(os.path.join(folder_path, images[index]))
+                        img = img.resize((max_img_width, max_img_height))
+                        axs[i, j].imshow(img)
+                        axs[i, j].axis(im_matrix['axis'])
+
+                      
+                        if i < len(args) and args[i] and not df.empty:
+                            check_col = args[i].get('check_col')
+                            display_cols = args[i].get('display_cols')
+                            display_name = args[i].get('display_name')
+
+                            if check_col:
+                                image_name = images[index].split('.')[0]
+                                row = df[df[check_col] == image_name]
+                                if not row.empty:
+                                    labels = ""
+                                    axs[i, j].axis(im_matrix['axis'])
+                                    if display_cols:
+                                        labels = '\n'.join([f"{col}: {str(row[col].values[0])}" for col in display_cols if col in df.columns])
+
+                                    if display_name:
+                                        labels = f"{image_name}\n{labels}"
+
+                                    axs[i, j].text(0, 0, labels, color='white', backgroundcolor='black', va='bottom', fontsize=10)
+                                else:
+                                    axs[i, j].text(0, 0, "No data", color='white', backgroundcolor='black', va='bottom', fontsize=10)
+
+                    else:
+                        axs[i, j].axis('off')
+
+            plt.tight_layout()
+            plt.show()
