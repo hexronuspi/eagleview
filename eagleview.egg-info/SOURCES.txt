@@ -1,0 +1,11 @@
+README.md
+pyproject.toml
+setup.py
+eagleview/__init__.py
+eagleview/figshow.py
+eagleview.egg-info/PKG-INFO
+eagleview.egg-info/SOURCES.txt
+eagleview.egg-info/dependency_links.txt
+eagleview.egg-info/requires.txt
+eagleview.egg-info/top_level.txt
+tests/test_check.py
