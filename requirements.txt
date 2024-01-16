@@ -1,6 +1,3 @@
 matplotlib>=3, <4
 pandas>=2, <3
 pillow>=10, <11
-
-pytest
-poetry
