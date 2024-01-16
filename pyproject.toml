@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "eagleview"
 version = "1.2"
-description = "Easy Visualisation of Plots"
+description = "Greatly enhances Image Data visualisation"
 authors = ["Aditya"]
 readme = "README.md"
 
