@@ -1,63 +1,55 @@
-# rgbview.py
-
 import os
 import matplotlib.pyplot as plt
 from PIL import Image
-import numpy as np
 
 class RGBView:
     def __init__(self, path):
         self.path = path
 
         if os.path.isdir(path):
-            # If path is a directory, get the first 4 images in the directory
-            images = [f for f in os.listdir(path) if os.path.isfile(os.path.join(path, f)) and f.lower().endswith(('.png', '.jpg', '.jpeg', '.gif', '.bmp'))]
-            if images:
-                self.img_paths = [os.path.join(path, img) for img in images[:4]] # limit img using slicing 
-            else:
+            # If path is a directory, get all image files in the directory
+            self.img_paths = [os.path.join(path, img) for img in os.listdir(path) if os.path.isfile(os.path.join(path, img)) and img.lower().endswith(('.png', '.jpg', '.jpeg', '.gif', '.bmp'))]
+            if not self.img_paths:
                 raise ValueError(f"No image files found in {path}.")
         else:
             raise ValueError(f"Invalid path: {path}")
 
-        self.original_imgs = [Image.open(img_path) for img_path in self.img_paths]
-        self.rgb_imgs = [self._prepare_image(img, original_img) for img, original_img in zip(self.original_imgs, self.original_imgs)]
-
-    def _prepare_image(self, img, original_img):
-        #img orientation (vertical)
-        if original_img.width > original_img.height:
-            img = img.transpose(Image.Transpose.ROTATE_270)
+    def _prepare_image(self, img_path):
+        img = Image.open(img_path)
+        # convert to RGB mode if not already in RGB
+        if img.mode == 'L':  # Grayscale
+            img = img.convert('RGB')
+        elif img.mode == 'RGBA':
+            img = img.convert('RGB')
         return img
 
-    def _flip_rgb_vertically(self, r, g, b):
-        return np.flipud(r), np.flipud(g), np.flipud(b)
-
     def show_rgb(self):
-        fig, axs = plt.subplots(4, 4, figsize=(15, 15))
-
-        for i, (img_path, original_img, rgb_img) in enumerate(zip(self.img_paths, self.original_imgs, self.rgb_imgs)):
-            # extract
-            r, g, b = np.array(rgb_img).T
-
-            # flip vertically
-            r, g, b = self._flip_rgb_vertically(r, g, b)
+        for img_path in self.img_paths:
+            original_img = self._prepare_image(img_path)
 
             # Display original image
-            axs[i, 0].imshow(original_img)
-            axs[i, 0].axis('off')
-            axs[i, 0].set_title(f'Original - {os.path.basename(img_path)}')
+            plt.figure(figsize=(10, 5))
+            plt.subplot(1, 4, 1)
+            plt.imshow(original_img)
+            plt.title(f'Original - {os.path.basename(img_path)}')
+            plt.axis('off')
 
-            # Display vertically mirrored RGB channels
-            axs[i, 1].imshow(r, cmap='Reds', aspect='auto', origin='upper') 
-            axs[i, 1].axis('off')
-            axs[i, 1].set_title('Red Channel (Mirrored)')
+            # Display RGB channels
+            r, g, b = original_img.split()
+            plt.subplot(1, 4, 2)
+            plt.imshow(r, cmap='Reds')
+            plt.title('Red Channel')
+            plt.axis('off')
 
-            axs[i, 2].imshow(g, cmap='Greens', aspect='auto', origin='upper')
-            axs[i, 2].axis('off')
-            axs[i, 2].set_title('Green Channel (Mirrored)')
+            plt.subplot(1, 4, 3)
+            plt.imshow(g, cmap='Greens')
+            plt.title('Green Channel')
+            plt.axis('off')
 
-            axs[i, 3].imshow(b, cmap='Blues', aspect='auto', origin='upper')
-            axs[i, 3].axis('off')
-            axs[i, 3].set_title('Blue Channel (Mirrored)')
+            plt.subplot(1, 4, 4)
+            plt.imshow(b, cmap='Blues')
+            plt.title('Blue Channel')
+            plt.axis('off')
 
-        plt.tight_layout()
-        plt.show()
+            plt.tight_layout()
+            plt.show()
