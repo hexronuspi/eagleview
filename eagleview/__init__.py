@@ -1,2 +1,2 @@
 from eagleview.figshow import *
-from eagleview.rgbview import *
+from eagleview.colortool import *
