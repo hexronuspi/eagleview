@@ -1,3 +1,5 @@
+# rgbview.py
+
 import os
 import matplotlib.pyplot as plt
 from PIL import Image
@@ -7,10 +9,13 @@ class RGBView:
         self.path = path
 
         if os.path.isdir(path):
-            # If path is a directory, get all image files in the directory
+            # If the path is a directory, get all image files in the directory
             self.img_paths = [os.path.join(path, img) for img in os.listdir(path) if os.path.isfile(os.path.join(path, img)) and img.lower().endswith(('.png', '.jpg', '.jpeg', '.gif', '.bmp'))]
             if not self.img_paths:
                 raise ValueError(f"No image files found in {path}.")
+        elif os.path.isfile(path) and path.lower().endswith(('.png', '.jpg', '.jpeg', '.gif', '.bmp')):
+            # If the path is a valid image file, process only that image
+            self.img_paths = [path]
         else:
             raise ValueError(f"Invalid path: {path}")
 
@@ -53,3 +58,7 @@ class RGBView:
 
             plt.tight_layout()
             plt.show()
+
+# Example usage
+rgb_viewer = RGBView('path_to_your_image_directory_or_file/filename.ext')
+rgb_viewer.show_rgb()
