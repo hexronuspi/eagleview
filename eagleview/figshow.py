@@ -109,8 +109,8 @@ class MultiImageMatrix:
         return self
 
     def display_image(self, *args, **kwargs):
-        if len(args) != len(self.folder_paths):
-            raise ValueError("Number of arguments should match the number of folders.")
+        if len(args) > len(self.folder_paths):
+            raise ValueError("Number of arguments should not exceed the number of folders.")
 
         for i, im_matrix in enumerate(self.image_matrices):
             folder_path = im_matrix['folder_path']
@@ -144,16 +144,15 @@ class MultiImageMatrix:
             fig, axs = plt.subplots(im_matrix['grid_dimensions'][0], im_matrix['grid_dimensions'][1], figsize=(reduced_width, reduced_height))
             fig.patch.set_facecolor('white')
 
-            for i in range(im_matrix['grid_dimensions'][0]):
-                for j in range(im_matrix['grid_dimensions'][1]):
-                    index = i * im_matrix['grid_dimensions'][1] + j
+            for i_row in range(im_matrix['grid_dimensions'][0]):
+                for j_col in range(im_matrix['grid_dimensions'][1]):
+                    index = i_row * im_matrix['grid_dimensions'][1] + j_col
                     if index < len(images):
                         img = Image.open(os.path.join(folder_path, images[index]))
                         img = img.resize((max_img_width, max_img_height))
-                        axs[i, j].imshow(img)
-                        axs[i, j].axis(im_matrix['axis'])
+                        axs[i_row, j_col].imshow(img)
+                        axs[i_row, j_col].axis(im_matrix['axis'])
 
-                      
                         if i < len(args) and args[i] and not df.empty:
                             check_col = args[i].get('check_col')
                             display_cols = args[i].get('display_cols')
@@ -164,19 +163,18 @@ class MultiImageMatrix:
                                 row = df[df[check_col] == image_name]
                                 if not row.empty:
                                     labels = ""
-                                    axs[i, j].axis(im_matrix['axis'])
+                                    axs[i_row, j_col].axis(im_matrix['axis'])
                                     if display_cols:
                                         labels = '\n'.join([f"{col}: {str(row[col].values[0])}" for col in display_cols if col in df.columns])
 
                                     if display_name:
                                         labels = f"{image_name}\n{labels}"
 
-                                    axs[i, j].text(0, 0, labels, color='white', backgroundcolor='black', va='bottom', fontsize=10)
+                                    axs[i_row, j_col].text(0, 0, labels, color='white', backgroundcolor='black', va='bottom', fontsize=10)
                                 else:
-                                    axs[i, j].text(0, 0, "No data", color='white', backgroundcolor='black', va='bottom', fontsize=10)
-
+                                    axs[i_row, j_col].text(0, 0, "No data", color='white', backgroundcolor='black', va='bottom', fontsize=10)
                     else:
-                        axs[i, j].axis('off')
+                        axs[i_row, j_col].axis('off')
 
             plt.tight_layout()
             plt.show()
