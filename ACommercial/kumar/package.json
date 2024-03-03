@@ -1,0 +1,50 @@
+{
+  "name": "kumar",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@emailjs/browser": "^4.2.0",
+    "@nextui-org/react": "^2.2.9",
+    "@react-google-maps/api": "^2.19.3",
+    "@tabler/icons-react": "^2.47.0",
+    "@tiptap/extension-link": "^2.2.4",
+    "@tiptap/react": "^2.2.4",
+    "@tiptap/starter-kit": "^2.2.4",
+    "dayjs": "^1.11.10",
+    "embla-carousel-react": "^8.0.0",
+    "fa": "^1.0.1",
+    "formik": "^2.4.5",
+    "framer-motion": "^11.0.8",
+    "lightbox.js-react": "^1.0.2",
+    "next": "14.1.1",
+    "nodemailer": "^6.9.11",
+    "react": "^18",
+    "react-dom": "^18",
+    "react-icons": "^5.0.1",
+    "react-photo-album": "^2.3.1",
+    "react-spring": "^9.7.3",
+    "react-viewport-hooks": "^1.5.0",
+    "recharts": "^2.12.2",
+    "styled-components": "^6.1.8"
+  },
+  "devDependencies": {
+    "@types/d3-array": "^3.2.1",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "autoprefixer": "^10.0.1",
+    "eslint": "^8",
+    "eslint-config-next": "14.1.1",
+    "postcss": "^8.4.35",
+    "postcss-preset-mantine": "^1.13.0",
+    "postcss-simple-vars": "^7.0.1",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5"
+  }
+}
